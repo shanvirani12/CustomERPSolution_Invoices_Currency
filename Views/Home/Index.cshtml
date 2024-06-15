@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Your Application!</h1>
+    <p class="lead">This is a modern ASP.NET Core MVC application with a wide range of features and services.</p>
+    <hr class="my-4">
+    <p>Explore our features and learn more about what we offer.</p>
+    <a class="btn btn-primary btn-lg" asp-area="" asp-controller="Home" asp-action="About">Learn More</a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Clients</h2>
+        <p>Manage all your Clients in one place. Create, edit, and track Clients with ease.</p>
+        <a class="btn btn-secondary" asp-area="" asp-controller="Clients" asp-action="Index">Manage Clients</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Products</h2>
+        <p>Manage all your Products in one place. Create, edit, and track Products with ease.</p>
+        <a class="btn btn-secondary" asp-area="Identity" asp-controller="Products">Manage Products</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Quotations</h2>
+        <p>Manage all your Quotations in one place. Create, edit, and track Quotation with ease.</p>
+        <a class="btn btn-secondary" asp-area="" asp-controller="Quotations" asp-action="Index">Manage Quotations</a>
+    </div>
+</div>
+
+
+<hr class="my-4">
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Invoices</h2>
+        <p>Manage all your invoices in one place. Create, edit, and track invoices with ease.</p>
+        <a class="btn btn-secondary" asp-area="" asp-controller="Invoices" asp-action="Index">Manage Invoices</a>
+    </div>
+    <div class="col-md-4">
+        <h2>User Management</h2>
+        <p>Manage user accounts, roles, and permissions within the application.</p>
+        <a class="btn btn-secondary" asp-area="Identity" asp-page="/Account/Manage/Index">User Management</a>
+    </div>
+    <div class="col-md-4">
+        <h2>Orders</h2>
+        <p>Manage all your Orders in one place. Create, edit, and track Orders with ease.</p>
+        <a class="btn btn-secondary" asp-area="" asp-controller="Orders" asp-action="Index">Manage Orders</a>
+    </div>
+</div>
+
+
+

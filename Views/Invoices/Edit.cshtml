@@ -1,0 +1,91 @@
+﻿@model CustomERPSolution_Invoices_Currency.Models.Invoice
+
+@{
+    ViewData["Title"] = "Edit Invoice";
+}
+
+<h1>Edit Invoice</h1>
+
+<h4>Invoice</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ClientId" class="control-label"></label>
+                <select asp-for="ClientId" class="form-control" asp-items="ViewBag.ClientId"></select>
+                <span asp-validation-for="ClientId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Invoice Items</label>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="invoiceItemRows">
+                        @foreach (var item in Model.InvoiceItems)
+                        {
+                            <tr>
+                                <td>
+                                    <select class="form-control" name="InvoiceItems[@item.Id].ProductId" asp-items="ViewBag.ProductId"></select>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" name="InvoiceItems[@item.Id].Quantity" value="@item.Quantity" />
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" step="0.01" name="InvoiceItems[@item.Id].UnitPrice" value="@item.UnitPrice" />
+                                </td>
+                                <td>
+                                    <input class="form-control" type="number" step="0.01" name="InvoiceItems[@item.Id].TotalPrice" value="@item.TotalPrice" readonly />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button type="button" onclick="addInvoiceItemRow()">Add Item</button>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function addInvoiceItemRow() {
+            var rowCount = $('#invoiceItemRows tr').length;
+            var newRow = `
+                        <tr>
+                            <td>
+                                <select class="form-control" name="InvoiceItems[${rowCount}].ProductId" asp-items="ViewBag.ProductId"></select>
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" name="InvoiceItems[${rowCount}].Quantity" />
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" step="0.01" name="InvoiceItems[${rowCount}].UnitPrice" />
+                            </td>
+                            <td>
+                                <input class="form-control" type="number" step="0.01" name="InvoiceItems[${rowCount}].TotalPrice" readonly />
+                            </td>
+                        </tr>`;
+            $('#invoiceItemRows').append(newRow);
+        }
+    </script>
+}

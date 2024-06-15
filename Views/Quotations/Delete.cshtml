@@ -1,0 +1,25 @@
+﻿@model CustomERPSolution_Invoices_Currency.Models.Quotation
+
+@{
+    ViewData["Title"] = "Delete Quotation";
+}
+
+<h1>Delete Quotation</h1>
+
+<h4>Quotation</h4>
+<hr />
+<div>
+    <h4>Are you sure you want to delete this?</h4>
+    <div>
+        <h5>Client: @Model.Client.Name</h5>
+        <h5>Date: @Model.Date.ToShortDateString()</h5>
+        <h5>Total Amount: @Model.TotalAmount</h5>
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>
